@@ -1,0 +1,23 @@
+variables:
+  IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+
+build:
+  stage: build
+  tags:
+    - docker
+    - shell-executor
+  script:
+    - docker build . 
+
+build:push:
+  stage: build
+  tags:
+    - docker
+    - shell-executor
+  script:
+    - docker build -t $IMAGE_NAME .
+    - docker push $IMAGE_NAME
+
