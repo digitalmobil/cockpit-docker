@@ -16,7 +16,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 
 RUN echo 'date.timezone="Europe/Berlin"' > /usr/local/etc/php/conf.d/php-timezone.ini
 
-ENV COCKPIT_VERSION=master
+ENV COCKPIT_VERSION=next
 ENV COCKPIT_ROOT=/var/www/html
 
 ADD https://github.com/COCOPi/cockpit/archive/$COCKPIT_VERSION.tar.gz /usr/src/cockpit.tar.gz
